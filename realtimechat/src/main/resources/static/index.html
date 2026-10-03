@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Chat</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="chat-container">
+
+    <!-- Header -->
+    <header class="chat-header">
+        <div>
+            <h1>Real-Time Chat</h1>
+            <p id="connectionStatus">Not logged in</p>
+        </div>
+    </header>
+
+    <!-- LOGIN / REGISTER SECTION -->
+    <section id="authSection" class="login-section">
+
+        <h2 id="authTitle">Login</h2>
+
+        <!-- Username - only for Register -->
+        <input
+                type="text"
+                id="registerUsername"
+                placeholder="Enter your username"
+                autocomplete="off"
+                class="hidden"
+        >
+
+        <!-- Email -->
+        <input
+                type="email"
+                id="authEmail"
+                placeholder="Enter your email"
+                autocomplete="off"
+        >
+
+        <!-- Password -->
+        <input
+                type="password"
+                id="authPassword"
+                placeholder="Enter your password"
+                autocomplete="off"
+        >
+
+        <!-- Login Button -->
+        <button id="loginBtn" type="button">
+            Login
+        </button>
+
+        <!-- Register Button -->
+        <button id="registerBtn" class="hidden" type="button">
+            Create Account
+        </button>
+
+        <!-- Switch Login/Register -->
+        <p style="margin-top: 15px;">
+
+            <span id="switchText">
+                Don't have an account?
+            </span>
+
+            <button
+                    id="switchAuthBtn"
+                    type="button"
+                    style="
+                    background: none;
+                    color: #2563eb;
+                    padding: 0;
+                    width: auto;
+                    font-size: 14px;
+                "
+            >
+                Register
+            </button>
+
+        </p>
+
+    </section>
+
+    <!-- CHAT SECTION -->
+    <section id="chatSection" class="chat-section hidden">
+
+        <!-- Room and Online Status -->
+        <div class="chat-info" id="groupChatInfo">
+
+            <div>
+                <label for="roomSelect">Room:</label>
+
+                <select id="roomSelect">
+                    <option value="general">General</option>
+                    <option value="java">Java</option>
+                    <option value="gaming">Gaming</option>
+                    <option value="random">Random</option>
+                </select>
+            </div>
+
+            <span id="onlineStatus">
+                Offline
+            </span>
+
+        </div>
+
+        <!-- Private Chat Header -->
+        <div id="privateChatInfo" class="chat-info hidden">
+
+            <div>
+                <button
+                        id="backToGroupBtn"
+                        type="button"
+                        style="width: auto;"
+                >
+                    ← Back to Groups
+                </button>
+
+                <h3 id="privateChatTitle">
+                    Private Chat
+                </h3>
+            </div>
+
+            <span id="privateStatus">
+                Private
+            </span>
+
+        </div>
+
+        <!-- Registered Users -->
+        <div class="user-list-section" id="userListSection">
+
+            <h3>Users</h3>
+
+            <p>Select a user to start a private chat.</p>
+
+            <div id="userList">
+                Loading users...
+            </div>
+
+        </div>
+
+        <!-- Messages -->
+        <div
+                id="messageArea"
+                class="message-area">
+        </div>
+
+        <!-- Message Input -->
+        <div class="message-input">
+
+            <input
+                    type="text"
+                    id="message"
+                    placeholder="Type your message..."
+                    autocomplete="off"
+            >
+
+            <button id="sendBtn" type="button">
+                Send
+            </button>
+
+        </div>
+
+    </section>
+
+</div>
+
+<!-- WebSocket Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1.6.1/dist/sockjs.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7.0.0/bundles/stomp.umd.min.js"></script>
+
+<!-- Our JavaScript -->
+<script src="script.js?v=5"></script>
+
+</body>
+</html>
